@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @tasktop.name %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @tasktop.weight %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @tasktop.owner %>
+</p>
+
+<%= link_to 'Edit', edit_tasktop_path(@tasktop) %> |
+<%= link_to 'Back', tasktops_path %>

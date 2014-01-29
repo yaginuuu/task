@@ -1,0 +1,31 @@
+<h1>Listing tasktops</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Weight</th>
+      <th>Owner</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasktops.each do |tasktop| %>
+      <tr>
+        <td><%= tasktop.name %></td>
+        <td><%= tasktop.weight %></td>
+        <td><%= tasktop.owner %></td>
+        <td><%= link_to 'Show', tasktop %></td>
+        <td><%= link_to 'Edit', edit_tasktop_path(tasktop) %></td>
+        <td><%= link_to 'Destroy', tasktop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tasktop', new_tasktop_path %>
