@@ -5,7 +5,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
+		<%= @users %>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:weight) %></th>
       <th><%= model_class.human_attribute_name(:owner) %></th>
@@ -20,7 +20,7 @@
         <td><%= tasktop.name %></td>
         <td><%= tasktop.weight %></td>
         <td><%= tasktop.owner %></td>
-        <td><%=l tasktop.created_at %></td>
+        <td><%= tasktop.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_tasktop_path(tasktop), :class => 'btn btn-mini' %>

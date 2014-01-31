@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -36,15 +36,14 @@
 
 		<%= javascript_include_tag "application" %>
 	</head>
-	<center>
 		<body>
 			<p class="navbar-text pull-right">
 			<% if user_signed_in? %>
-				Logged in as <strong><%= current_user.username %></strong>
-				<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+				<strong><%= current_user.username %></strong>
+				<%= link_to "ログアウト", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
 			<% else %>
-				<%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-				<%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+				<%= link_to "新規登録", new_user_registration_path, :class => 'navbar-link'  %> |
+				<%= link_to "ログイン", new_user_session_path, :class => 'navbar-link'  %>
 			<% end %>
 			<div class="navbar navbar-fluid-top">
 				<div class="navbar-inner">
@@ -54,12 +53,9 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</a>
-						<a class="brand" href="#">Task</a>
+						<a class="brand" href="/">PBL個人評価システム</a>
 						<div class="container-fluid nav-collapse">
 							<ul class="nav">
-								<li><%= link_to "Link1", "/path1"  %></li>
-								<li><%= link_to "Link2", "/path2"  %></li>
-								<li><%= link_to "Link3", "/path3"  %></li>
 							</ul>
 						</div><!--/.nav-collapse -->
 					</div>
@@ -81,10 +77,9 @@
 				</div><!--/row-->
 
 				<footer>
-				<p>&copy; Company 2014</p>
+				<p>&copy; Company yaginuuu2014</p>
 				</footer>
 
 			</div> <!-- /container -->
-		</center>
 	</body>
 </html>

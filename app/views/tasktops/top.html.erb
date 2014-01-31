@@ -1,0 +1,16 @@
+<div id="container">
+	<div id="head">
+		<%= high_chart("sampleis", @graph) %>
+	</div>
+	<div id="left_g">
+		<%= high_chart("sample", @pie_graph) %>
+	</div>
+	<div id="right_g"; align="center"> 
+		<h2>あなたのタスク消化率は</h2>
+		<font size="7" color="red">20%</font><font size="5"><b>です</b></font>
+	</div>
+	<div id="new" align="center">
+		<%= link_to "新規タスク登録", new_tasktop_path, :class => 'btn btn-primary btn-large' %>
+						
+	</div>
+</div>

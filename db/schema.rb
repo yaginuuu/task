@@ -11,12 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140129051209) do
+ActiveRecord::Schema.define(version: 20140129140849) do
+
+  create_table "groups", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "tasktop_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tasktops", force: true do |t|
     t.string   "name"
     t.integer  "weight"
     t.string   "owner"
+    t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

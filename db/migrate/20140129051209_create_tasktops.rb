@@ -4,6 +4,7 @@ class CreateTasktops < ActiveRecord::Migration
       t.string :name
       t.integer :weight
       t.string :owner
+	  t.integer :group_id
 
       t.timestamps
     end

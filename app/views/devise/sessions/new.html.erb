@@ -1,17 +1,18 @@
-
-<h2>Sign in しますよー</h2>
+<center>
+	<h2>ログイン</h2>
 
 <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-	<div><%= f.label :username %><br />
+	<div><%= f.label :ユーザー名 %><br />
 		<%= f.text_field :login, :autofocus => true %></div>
 
-	<div><%= f.label :password %><br />
+	<div><%= f.label :パスワード %><br />
 		<%= f.password_field :password %></div>
 
 	<% if devise_mapping.rememberable? -%>
-		<div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+		<div><%= f.check_box :remember_me %> <%= f.label :保存する %></div>
 	<% end -%>
 
-	<div><%= f.submit "Sign in" %></div>
+	<%= f.submit :ログイン, :class => 'btn' %>
 <% end %>
+</center>
 
