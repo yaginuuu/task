@@ -4,12 +4,15 @@ class TasktopsController < ApplicationController
 	# GET /tasktops
 	# GET /tasktops.json
 	def top
-		category = ["yaginuuu","B君","C君","D君","E君"]
+		@team_member = Tasktop.where(group_id: current_user.group)
+		team_member = @team_member.name
+		# category = [,"B君","C君","D君","E君"]
+		@
 		current_quantity = [5,10,2,7,3]
 
 		@graph = LazyHighCharts::HighChart.new('graph') do |f|
 			f.title(text: 'タスク振り分け状況')
-			f.xAxis(categories: category)
+			f.xAxis(categories: team_member)
 			f.series(name: 'タスク量', data: current_quantity, type: 'bar')
 		end
 
@@ -19,6 +22,8 @@ class TasktopsController < ApplicationController
 			f.title(text: 'あなたのタスク消化率')
 			f.series(name: 'タスク', data: data, type: 'pie')
 		end
+		@tasks = Tasktop.where(group_id: current_user.group)
+		
 	end
 
 	def index
@@ -88,6 +93,6 @@ class TasktopsController < ApplicationController
 
 	# Never trust parameters from the scary internet, only allow the white list through.
 	def tasktop_params
-		params.require(:tasktop).permit(:name, :weight, :owner, :user_id)
+		params.require(:tasktop).permit(:name, :weight, :owner, :group_id)
 	end
 end

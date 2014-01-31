@@ -8,6 +8,8 @@
 	<%= f.input :owner, :label => "タスク担当者" %>
 	<br>
 	<br>
+	<%= p current_user.group %>
+	<%= f.hidden_field :group_id, :value => current_user.group %>
 	<%= f.submit :登録する, :class => 'btn btn-primary' %>
 	<%= link_to "キャンセル", tasktops_path, :class => 'btn' %>
 <% end %>
