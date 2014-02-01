@@ -1,6 +1,6 @@
 <%- model_class = Tasktop -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+	<h1>タスク詳細</h1>
 </div>
 
 <dl class="dl-horizontal">
@@ -8,18 +8,16 @@
   <dd><%= @tasktop.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:weight) %>:</strong></dt>
   <dd><%= @tasktop.weight %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:owner) %>:</strong></dt>
-  <dd><%= @tasktop.owner %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:owner_id) %>:</strong></dt>
+	<dd><%= @tasktop.owner_id %></dd>
 </dl>
 
 <div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              tasktops_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_tasktop_path(@tasktop), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              tasktop_path(@tasktop),
+  <%= link_to "マイページに戻る", root_path, :class => 'btn'  %>
+  <%= link_to "タスク一覧", tasktops_path, :class => 'btn'  %>
+  <%= link_to "タスクを編集", edit_tasktop_path(@tasktop), :class => 'btn' %>
+  <%= link_to "タスクを削除", tasktop_path(@tasktop),
               :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => '本当に消しますか?')) },
               :class => 'btn btn-danger' %>
 </div>

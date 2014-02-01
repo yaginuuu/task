@@ -23,17 +23,19 @@ ActiveRecord::Schema.define(version: 20140129140849) do
   create_table "tasktops", force: true do |t|
     t.string   "name"
     t.integer  "weight"
-    t.string   "owner"
+    t.integer  "owner_id"
+    t.integer  "user_id"
     t.integer  "group_id"
+    t.integer  "finish"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
+    t.string   "email",                  default: ""
     t.string   "username",               default: "", null: false
     t.integer  "group"
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "encrypted_password",     default: ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

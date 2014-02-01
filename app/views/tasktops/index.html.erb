@@ -1,14 +1,14 @@
 <%- model_class = Tasktop -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1>タスク一覧</h1>
 </div>
 <table class="table table-striped">
   <thead>
     <tr>
 		<%= @users %>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:weight) %></th>
-      <th><%= model_class.human_attribute_name(:owner) %></th>
+      <th>タスク名</th>
+      <th>重み</th>
+      <th>担当者</th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -16,11 +16,12 @@
   <tbody>
     <% @tasktops.each do |tasktop| %>
       <tr>
-        <td><%= link_to tasktop.id, tasktop_path(tasktop) %></td>
-        <td><%= tasktop.name %></td>
+        <td><%= link_to tasktop.name, tasktop_path(tasktop) %></td>
         <td><%= tasktop.weight %></td>
-        <td><%= tasktop.owner %></td>
-        <td><%= tasktop.created_at %></td>
+        <td><%= tasktop. %></td>
+
+        <td><%= tasktop.owner_id %></td>
+        <td><%= tasktop.owner_id %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_tasktop_path(tasktop), :class => 'btn btn-mini' %>
