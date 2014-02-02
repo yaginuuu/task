@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20140129140849) do
   create_table "tasktops", force: true do |t|
     t.string   "name"
     t.integer  "weight"
-    t.integer  "owner_id"
     t.integer  "user_id"
     t.integer  "group_id"
     t.integer  "finish"

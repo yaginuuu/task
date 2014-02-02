@@ -7,15 +7,14 @@
 	<br>
 	タスク担当者を入力してください
 	<br>
-	<%= f.collection_select :owner_id, User.where(group: current_user.group), :id, :username %>
+	<%= f.collection_select :user_id, User.where(group: current_user.group), :id, :username %>
 	<br>
 	<br>
 	<%= f.check_box :finish %>
 	<%= p current_user.group %>
-	<%= f.hidden_field :user_id, :value => current_user.id %>
 	<%= f.hidden_field :group_id, :value => current_user.group %>
 	<%= f.submit :登録する, :class => 'btn btn-primary' %>
-	<%= link_to "キャンセル", tasktops_path, :class => 'btn' %>
+	<%= link_to "キャンセル", root_path, :class => 'btn' %>
 <% end %>
 
 

@@ -19,14 +19,14 @@ class TasktopsController < ApplicationController
 		weight_list = Array.new()
 		sum = 0
 		team_member_id.each do |f|
-			sum = Tasktop.where(owner_id: f).pluck(:weight).inject(:+)
+			sum = Tasktop.where(user_id: f).pluck(:weight).inject(:+)
 			weight_list.push(sum)
 		end
 		p weight_list
 		
 		#pieグラフのデータ作成
-		notyet_task = (Tasktop.where(owner_id: current_user.id, finish: 0).pluck(:id)).length
-		finishd_task = (Tasktop.where(owner_id: current_user.id, finish: 1).pluck(:id)).length
+		notyet_task = (Tasktop.where(user_id: current_user.id, finish: 0).pluck(:id)).length
+		finishd_task = (Tasktop.where(user_id: current_user.id, finish: 1).pluck(:id)).length
 		p finishd_task
 		p notyet_task
 		taskdata = [['消化済タスク', finishd_task],['未消化タスク', notyet_task]]
@@ -43,7 +43,7 @@ class TasktopsController < ApplicationController
 		end
 		
 		#タスク消化率を計算
-		mytask_weight = Tasktop.where(owner_id: current_user.id, finish: 1).pluck(:weight).inject(:+)
+		mytask_weight = Tasktop.where(user_id: current_user.id, finish: 1).pluck(:weight).inject(:+)
 		teamtask_weight = Tasktop.where(group_id: current_user.group).pluck(:weight).inject(:+)
 		p mytask_weight
 		p teamtask_weight
@@ -75,10 +75,10 @@ class TasktopsController < ApplicationController
 	# POST /tasktops.json
 	def create
 		@tasktop = Tasktop.new(tasktop_params)
-
+		@tasktop.weight = 0 if @tasktop.weight == nil
 		respond_to do |format|
 			if @tasktop.save
-				format.html { redirect_to @tasktop, notice: 'Tasktop was successfully created.' }
+				format.html { redirect_to @tasktop, notice: 'タスクが作成されました！' }
 				format.json { render action: 'show', status: :created, location: @tasktop }
 			else
 				format.html { render action: 'new' }
@@ -92,7 +92,7 @@ class TasktopsController < ApplicationController
 	def update
 		respond_to do |format|
 			if @tasktop.update(tasktop_params)
-				format.html { redirect_to @tasktop, notice: 'Tasktop was successfully updated.' }
+				format.html { redirect_to @tasktop, notice: 'タスクが更新されました！' }
 				format.json { head :no_content }
 			else
 				format.html { render action: 'edit' }
@@ -119,6 +119,6 @@ class TasktopsController < ApplicationController
 
 	# Never trust parameters from the scary internet, only allow the white list through.
 	def tasktop_params
-		params.require(:tasktop).permit(:name, :weight, :owner_id, :user_id, :group_id, :finish)
+		params.require(:tasktop).permit(:name, :weight, :user_id, :group_id, :finish)
 	end
 end

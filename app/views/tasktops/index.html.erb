@@ -9,26 +9,23 @@
       <th>タスク名</th>
       <th>重み</th>
       <th>担当者</th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+			<th>消化済かどうか</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @tasktops.each do |tasktop| %>
+			<% tasktop.finish == 0 ? finish = '未' : finish = '済' %>
       <tr>
         <td><%= link_to tasktop.name, tasktop_path(tasktop) %></td>
         <td><%= tasktop.weight %></td>
-        <td><%= tasktop. %></td>
-
-        <td><%= tasktop.owner_id %></td>
-        <td><%= tasktop.owner_id %></td>
+        <td><%= tasktop.user.username %></td>
+        <td><%= finish %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_tasktop_path(tasktop), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      tasktop_path(tasktop),
+          <%= link_to "編集", edit_tasktop_path(tasktop), :class => 'btn btn-mini' %>
+          <%= link_to '削除', tasktop_path(tasktop),
                       :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => '本当に消してもいいですか?')) },
                       :class => 'btn btn-mini btn-danger' %>
         </td>
       </tr>
@@ -36,6 +33,21 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_tasktop_path,
-            :class => 'btn btn-primary' %>
+
+<div class="form-actions">
+	<%= link_to "マイページに戻る", root_path, :class => 'btn'  %>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+				

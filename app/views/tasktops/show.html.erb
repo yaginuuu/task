@@ -3,21 +3,28 @@
 	<h1>タスク詳細</h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @tasktop.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:weight) %>:</strong></dt>
-  <dd><%= @tasktop.weight %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:owner_id) %>:</strong></dt>
-	<dd><%= @tasktop.owner_id %></dd>
-</dl>
-
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>タスク名</th>
+			<th>重み</th>
+			<th>担当者</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><%= @tasktop.name %></td>
+			<td><%= @tasktop.weight %></td>
+			<td><%= @tasktop.user.username %></td>
+		</tr>
+	</tbody>
+</table>
 <div class="form-actions">
-  <%= link_to "マイページに戻る", root_path, :class => 'btn'  %>
-  <%= link_to "タスク一覧", tasktops_path, :class => 'btn'  %>
-  <%= link_to "タスクを編集", edit_tasktop_path(@tasktop), :class => 'btn' %>
-  <%= link_to "タスクを削除", tasktop_path(@tasktop),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => '本当に消しますか?')) },
-              :class => 'btn btn-danger' %>
-</div>
+	<%= link_to "マイページに戻る", root_path, :class => 'btn'  %>
+	<%= link_to "タスク一覧", tasktops_path, :class => 'btn'  %>
+	<%= link_to "タスクを編集", edit_tasktop_path(@tasktop), :class => 'btn' %>
+	<%= link_to "タスクを削除", tasktop_path(@tasktop),
+		:method => 'delete',
+		:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => '本当に消しますか?')) },
+		:class => 'btn btn-danger' %>
+	</div>
